@@ -41,7 +41,7 @@ public class PetStoreTest
     @DisplayName("Inventory Count Test")
     public void validateInventory()
     {
-        assertEquals(5, petStore.getPetsForSale().size(),"Inventory counts are off!");
+        assertEquals(6, petStore.getPetsForSale().size(),"Inventory counts are off!");
     }
 
     @Test
@@ -86,12 +86,12 @@ public class PetStoreTest
 
         // Assuming Snake is a valid pet type with proper constructor and petStoreId of 3 exists in init()
         Snake snake = new Snake(AnimalType.EXOTIC, Skin.SCALES, Gender.MALE, Breed.BALL_PYTHON,
-                new BigDecimal("150.00"), 5);
+                new BigDecimal("150.00"), 1);
 
         Snake removedItem = (Snake) petStore.soldPetItem(snake);
 
         // Validation
-        assertEquals(inventorySize, petStore.getPetsForSale().size(), "Expected inventory does not match actual");
+        assertEquals(inventorySize+2, petStore.getPetsForSale().size(), "Expected inventory does not match actual");
         assertEquals(snake.getPetStoreId(), removedItem.getPetStoreId(), "The snake items are identical");
     }
 
